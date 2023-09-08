@@ -1,13 +1,13 @@
 import { Box, Button, Typography } from "@mui/material"
 import { useDispatch } from "react-redux";
-import { addToCartHandler } from "../redux/action";
+import { addProductToCart } from "../reduxToolkit/productState";
 
 export const ProductCard = (props) => {
     const { thumbnail, title, price, id, flag } = props;
     const dispatch = useDispatch();
 
     const addToCart = () => {
-        dispatch(addToCartHandler(props));
+        dispatch(addProductToCart(props));
     }
 
     return (

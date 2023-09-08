@@ -1,15 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux"
 import { CartItem } from "./CartItem";
-import { quantityChangeHandler } from "../redux/action";
+import { changeQtyHandler } from "../reduxToolkit/productState";
 
 export const Cart = () => {
-    const { cart } = useSelector((state) => state);
+    const { cart } = useSelector((state) => state.data);
 
     const dispatch = useDispatch();
 
     const addQuanity = (value, id) => {
-        dispatch(quantityChangeHandler(value, id))
+        dispatch(changeQtyHandler({value, id}))
     }
     return (
         <Box my={5}>

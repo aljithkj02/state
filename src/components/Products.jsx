@@ -1,22 +1,18 @@
 import { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { ProductCard } from "./ProductCard";
-import { getProducts } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
+import { getProductsFetch  } from "../reduxToolkit/productState";
 import { Loader } from "./Loader";
 
 export const Products = () => {
-    const { isLoading, products, cart } = useSelector((state) => state );
+    const { isLoading, products, cart } = useSelector((state) => state.data );
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchProducts();
-    }, [])
-
-    const fetchProducts = async () => {
-        dispatch(getProducts());
-    }
+        dispatch(getProductsFetch());
+    }, [dispatch])
 
     return (
         <Box py={3}>
